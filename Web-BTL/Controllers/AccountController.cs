@@ -60,7 +60,7 @@ namespace Web_BTL.Controllers
         [HttpGet]
         public IActionResult SignUp()
         {
-            return View();
+            return View(new CustomerModel());
         }
 
         [HttpPost]
@@ -83,6 +83,7 @@ namespace Web_BTL.Controllers
                     await _dataContext.SaveChangesAsync();
 
                     HttpContext.Session.SetString("LogIn Session", model.UserEmail);
+                    TempData["SuccessMessage"] = "Đăng ký thành công!"
                     return RedirectToAction(nameof(Index), "Home");
                 }
 

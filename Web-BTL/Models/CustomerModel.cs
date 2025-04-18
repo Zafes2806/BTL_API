@@ -6,8 +6,12 @@ namespace Web_BTL.Models
 {
     public class CustomerModel : UserModel
     {
+        public CustomerModel() {
+            Reviews = new List<ReviewModel>();
+        }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public int CustomerId { get; set; }
         public virtual ICollection<ReviewModel> Reviews { get; set; } // liên kết đến bảng review
         public virtual int? HistoryListId { get; set; } // khoá phụ bảng History List
